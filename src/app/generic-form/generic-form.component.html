@@ -1,0 +1,18 @@
+<form [formGroup]="dynamicForm">
+  <div formArrayName="filters">
+    <div
+      *ngFor="let filter of filtersFormArray.controls; let i = index;">
+      <div
+        [formGroupName]="i"
+        class="container">
+        <app-generic-control [form]="filter" (copyEvent)="onCopy($event)" (pasteEvent)="onPaste($event, filter)"></app-generic-control>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      (click)="addFilterToFiltersFormArray()">
+      Add Filter
+    </button>
+  </div>
+</form>
